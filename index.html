@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdsPower Profile Manager</title>
+<style>
+:root{
+--bg:#0f172a;
+--card:#1e293b;
+--line:#334155;
+--text:#f8fafc;
+--muted:#94a3b8;
+--accent:#22c55e;
+}
+*{box-sizing:border-box}
+body{
+font-family:Arial,sans-serif;
+background:var(--bg);
+color:var(--text);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+margin:0;
+padding:20px;
+}
+.card{
+background:var(--card);
+border:1px solid var(--line);
+padding:24px;
+border-radius:16px;
+max-width:450px;
+width:100%;
+}
+h1{text-align:center}
+p{text-align:center;color:var(--muted)}
+input{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:1px solid var(--line);
+background:#0f172a;
+color:white;
+margin-bottom:12px;
+}
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:var(--accent);
+font-weight:bold;
+cursor:pointer;
+}
+.result{
+margin-top:16px;
+text-align:center;
+font-size:22px;
+}
+.cta{
+display:block;
+margin-top:20px;
+text-align:center;
+padding:14px;
+background:#facc15;
+color:black;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+}
+footer{
+margin-top:15px;
+font-size:12px;
+text-align:center;
+color:var(--muted);
+}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>AdsPower Profile Calculator</h1>
+<p>Track browser profiles needed for your operation.</p>
+
+<input type="number" id="accounts" placeholder="Number of accounts">
+
+<button onclick="calculate()">Estimate Profiles</button>
+
+<div class="result" id="result">0 Profiles</div>
+
+<a class="cta" href="https://tinyurl.com/4w43szwy" target="_blank" rel="noopener sponsored">
+🎁 Get AdsPower - Save Up To 20%
+</a>
+
+<footer>
+Progress saved locally. This page contains an affiliate link and is not affiliated with or endorsed by AdsPower.
+</footer>
+</div>
+
+<script>
+const input=document.getElementById('accounts');
+const result=document.getElementById('result');
+
+input.value=localStorage.getItem('accounts')||'';
+
+function calculate(){
+const accounts=parseInt(input.value)||0;
+const profiles=Math.max(accounts,2);
+result.innerHTML=profiles+" Profiles Recommended";
+localStorage.setItem('accounts',accounts);
+}
+calculate();
+</script>
+</body>
+</html>
